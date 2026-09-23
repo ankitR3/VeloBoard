@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import prisma from '@repo/db';
 import { updateUserSchema } from '../../validators/user.validator';
+import bcrypt from 'bcrypt';
 
 export default async function updateUserController(req: Request<{ userId: string }>, res: Response) {
   try {
