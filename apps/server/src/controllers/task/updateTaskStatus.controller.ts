@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import prisma from '@repo/db';
 import { updateTaskStatusSchema } from '../../validators/task.validator';
 
-export default async function updateTaskStatus(req: Request<{ taskId: string }>, res: Response) {
+export default async function updateTaskStatusController(req: Request<{ taskId: string }>, res: Response) {
   try {
     const result = updateTaskStatusSchema.safeParse(req.body);
     

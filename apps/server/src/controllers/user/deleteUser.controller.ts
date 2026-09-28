@@ -4,6 +4,12 @@ import prisma from '@repo/db';
 export default async function deleteUserController(req: Request<{ userId: string }>, res: Response) {
   try {
     const { userId } = req.params;
+
+    if (req.user.id === userId) {
+      return res.status(400).json({
+        message: "You cannot delete your own account",
+      });
+    }
   
     const user = await prisma.user.findUnique({
       where: {
